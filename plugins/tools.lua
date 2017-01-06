@@ -401,7 +401,7 @@ local function unlock_group_documents(msg, data, target)
     return 'documents posting has been unlocked'
     end
   end
-end
+end.
 
 	local function lock_group_text(msg, data, target)
 		local msg_type = 'Text'
