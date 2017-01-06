@@ -384,24 +384,6 @@ end
   end
 end
 
-local function unlock_group_documents(msg, data, target)
-	local chat_id = msg.to.id
-	local msg_type = 'Documents'
-  if not is_momod(msg) then
-    return
-  end
-  local group_documents_lock = data[tostring(target)]['settings']['lock_documents']
-  if group_documents_lock == 'no' and not is_muted(chat_id, msg_type..': yes') then
-    return 'documents posting is not locked'
-  else
-  	if is_muted(chat_id, msg_type..': yes') then
-		unmute(chat_id, msg_type)
-    data[tostring(target)]['settings']['lock_documents'] = 'no'
-    save_data(_config.moderation.data, data)
-    return 'documents posting has been unlocked'
-    end
-  end
-end
 	local function lock_group_text(msg, data, target)
 		local msg_type = 'Text'
 		local chat_id = msg.to.id
